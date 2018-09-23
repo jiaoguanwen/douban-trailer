@@ -1,0 +1,31 @@
+{
+  "name": "douban-trailer",
+  "version": "1.0.0",
+  "description": "douban movie trailer koa node antd",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiaoguanwen/douban-trailer.git"
+  },
+  "keywords": [
+    "douban",
+    "movie",
+    "trailer",
+    "koa",
+    "node",
+    "antd"
+  ],
+  "author": "jiaoguanwen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jiaoguanwen/douban-trailer/issues"
+  },
+  "homepage": "https://github.com/jiaoguanwen/douban-trailer#readme",
+  "dependencies": {
+    "koa": "^2.5.3"
+  }
+}
