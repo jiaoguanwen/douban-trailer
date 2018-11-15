@@ -28,9 +28,7 @@ const sleep = time =>
 
     if (it && it.length > 0) {
       var link = it.attr('href')
-      var cover = it
-        .css('background-image')
-        .split('"')[1]
+      var cover = it.css('background-image').split('"')[1]
 
       return {
         link,
