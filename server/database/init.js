@@ -1,13 +1,18 @@
 const mongoose = require('mongoose')
 const db = 'mongodb://localhost/douban-test'
-// const glob = require('glob')
+const glob = require('glob')
 const { resolve } = require('path')
 mongoose.Promise = global.Promise
 
+exports.initSchemas = () => {
+  // 加载所有的schema文件内容 循环require请求
+  glob.sync(resolve(__dirname, './schema', '**/*.js')).forEach(require)
+}
+
 exports.connect = () => {
-  //连接数
+  // 连接数
   let maxConnectTimes = 0
-  //确保连接数据库后 执行后面代码
+  // 确保连接数据库后 执行后面代码
   return new Promise(resolve => {
     if (process.env.NODE_ENV !== 'production') {
       mongoose.set('debug', true)
@@ -40,15 +45,15 @@ exports.connect = () => {
     })
 
     mongoose.connection.once('open', () => {
-      //写入数据
+      // 写入数据
       resolve()
       console.log('MongoDB Connected successfully!')
-      const Dog = mongoose.model('Dog', { name: String })
+      /* const Dog = mongoose.model('Dog', { name: String })
       const doga = new Dog({ name: '阿尔法' + Math.random() })
 
       doga.save().then(() => {
         console.log('wang')
-      })
+      }) */
     })
   })
 }
