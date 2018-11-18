@@ -1,19 +1,26 @@
 const Koa = require('koa')
 const views = require('koa-views')
 const { resolve } = require('path')
+const { connect } = require('./database/init')
 
-const app = new Koa()
+;(async () => {
+  await connect()
 
-// Add render function to the ctx and some options
-app.use(views(resolve(__dirname, './views'), {
-  extension: 'pug'
-}))
+  const app = new Koa()
 
-app.use(async (ctx, next) => {
-  await ctx.render('index', {
-    you: 'Luke',
-    me: 'Jiaoguanwen'
+  // Add render function to the ctx and some options
+  app.use(
+    views(resolve(__dirname, './views'), {
+      extension: 'pug'
+    })
+  )
+
+  app.use(async (ctx, next) => {
+    await ctx.render('index', {
+      you: 'Luke',
+      me: 'Jiaoguanwen'
+    })
   })
-})
 
-app.listen(2333)
+  app.listen(2333)
+})()
