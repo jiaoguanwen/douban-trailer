@@ -12,9 +12,10 @@ const mongoose = require('mongoose')
   const app = new Koa()
 
   // 拉取电影列表数据
-  require('./tasks/movie')
+  // require('./tasks/movie')
+  // TODO 为什么一次只能跑一个task？
   // 拉取电影详细数据
-  require('./tasks/api')
+  // require('./tasks/api')
 
   // Add render function to the ctx and some options
   app.use(
