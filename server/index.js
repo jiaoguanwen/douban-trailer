@@ -3,13 +3,23 @@ const views = require('koa-views')
 const { resolve } = require('path')
 const { connect, initSchemas } = require('./database/init')
 const mongoose = require('mongoose')
+const R = require('ramda')
+const MIDDLEWARES = ['common', 'router']
+
+const useMiddlewares = app => {
+  R.map(
+    R.compose(
+      R.forEachObjIndexed(initWith => initWith(app)),
+      require,
+      name => resolve(__dirname, `./middlewares/${name}`)
+    )
+  )(MIDDLEWARES)
+}
 
 ;(async () => {
   await connect()
 
   initSchemas()
-
-  const app = new Koa()
 
   // 拉取电影列表数据
   // require('./tasks/movie')
@@ -21,8 +31,10 @@ const mongoose = require('mongoose')
   // 将多媒体资源搬运到七牛
   // require('./tasks/qiniu')
 
+  const app = new Koa()
   // Add render function to the ctx and some options
-  app.use(
+  await useMiddlewares(app)
+  /* app.use(
     views(resolve(__dirname, './views'), {
       extension: 'pug'
     })
@@ -33,7 +45,7 @@ const mongoose = require('mongoose')
       you: 'Luke',
       me: 'Jiaoguanwen'
     })
-  })
+  }) */
 
   app.listen(2333)
 })()
