@@ -16,6 +16,10 @@ const mongoose = require('mongoose')
   // TODO 为什么一次只能跑一个task？
   // 拉取电影详细数据
   // require('./tasks/api')
+  // 拉取视频数据
+  // require('./tasks/trailer')
+  // 将多媒体资源搬运到七牛
+  // require('./tasks/qiniu')
 
   // Add render function to the ctx and some options
   app.use(
