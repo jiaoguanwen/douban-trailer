@@ -64,5 +64,8 @@ typings/
 .idea
 
 # Parcel cache
+# 可以无视目录层级
 .cache
-parcel/.cache
+
+# Dist
+dist
