@@ -65,6 +65,7 @@ export default class LayoutDefault extends Component {
             <Menu.Item key={e.name}>{getMenuContent({ ...e })}</Menu.Item>
           ))}
         </Menu>
+        {/* children 将在布局文件引入时，提供props，里面有children，然后props里面的children由动态路由给出 */}
         <Spin spinning={loading} tip={tip} wrapperClassName="content-spin full">
           {children}
         </Spin>

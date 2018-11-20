@@ -16,6 +16,7 @@ export default (loadComponent, placeholder = '正在加载中') => {
     }
 
     async componentDidMount() {
+      // TODO 这里有问题，这个default，Child怎么拿到的？
       const { default: Child } = await loadComponent()
 
       if (this.unmount) return
