@@ -2,10 +2,11 @@
   "name": "douban-trailer",
   "version": "1.0.0",
   "description": "douban movie trailer koa node antd",
-  "main": "server/index.js",
+  "main": "./start.js",
   "scripts": {
-    "start": "node server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./start.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "myTest": "rm -rf myTest && sleep 4 && mkdir myTest && cd myTest && touch test.js && echo 'console.log(\"jiaoguanwen\", Date.now())' > test.js && node test"
   },
   "repository": {
     "type": "git",
@@ -47,6 +48,7 @@
     "koa-views": "^6.1.4",
     "lodash": "^4.17.11",
     "mongoose": "^5.3.12",
+    "nodemon": "^1.18.6",
     "pug": "^2.0.3",
     "puppeteer": "^1.8.0",
     "qiniu": "^7.2.1",
