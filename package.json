@@ -51,6 +51,8 @@
     "puppeteer": "^1.8.0",
     "qiniu": "^7.2.1",
     "ramda": "^0.26.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5"
   }

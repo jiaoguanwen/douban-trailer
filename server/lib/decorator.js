@@ -43,6 +43,7 @@ const normalizePath = path => (path.startsWith('/') ? path : `/${path}`)
 const router = conf => (target, key, descriptor) => {
   conf.path = normalizePath(conf.path)
   // 这里意味着一个路由只有一个处理函数，相加多个处理函数，在当前代码下，得写多个装饰器
+  // map中的key是对象的话，就是引用类型，即使这个对象的字面量是一样的，但是对于map来说，这也是两条数据
   routerMap.set(
     {
       target,
