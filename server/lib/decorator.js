@@ -21,10 +21,11 @@ export class Route {
     // require 路由文件
     glob.sync(resolve(this.apiPath, './**/*.js')).forEach(require)
 
-    console.log('routerMap:')
-    console.log(routerMap)
     for (let [conf, controller] of routerMap) {
       // 多个处理方法
+      console.log(routerMap)
+      console.log(conf)
+      console.log(controller)
       const controllers = isArray(controller)
       const prefixPath = conf.target[symbolPrefix]
       if (prefixPath) prefixPath = normalizePath(prefixPath)
@@ -41,7 +42,7 @@ const normalizePath = path => (path.startsWith('/') ? path : `/${path}`)
 
 const router = conf => (target, key, descriptor) => {
   conf.path = normalizePath(conf.path)
-
+  // 这里意味着一个路由只有一个处理函数，相加多个处理函数，在当前代码下，得写多个装饰器
   routerMap.set(
     {
       target,
@@ -51,7 +52,7 @@ const router = conf => (target, key, descriptor) => {
   )
 }
 
-// 装饰器 方法  对象属性挂载到原型上 唯一性
+// 装饰器 方法 对象属性挂载到原型上 唯一性
 export const controller = path => target => (target.prototype[symbolPrefix] = path)
 
 // 装饰器方法  get
