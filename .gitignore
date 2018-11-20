@@ -62,3 +62,7 @@ typings/
 
 # JetBrains files
 .idea
+
+# Parcel cache
+.cache
+parcel/.cache
