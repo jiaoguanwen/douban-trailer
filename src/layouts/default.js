@@ -18,6 +18,7 @@ export default class LayoutDefault extends Component {
   }
 
   componentDidMount() {
+    // TODO 这是什么玩意儿？
     window.__LOADING__ = this.toggleLoading
   }
 

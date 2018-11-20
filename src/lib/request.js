@@ -5,9 +5,11 @@ const defaultAxiosConf = {
   timeout: 5000
 }
 
+// TODO 这是什么玩意儿？
 const _request = (params = {}, fn = () => {}) => {
   return axios({ ...defaultAxiosConf, ...params })
     .then(res => {
+      // 这个定义的对象里面的属性为什么能直接用？相当于声明了一个变量。在浏览器端，这些变量不会挂载在window对象上，node中一样
       const { success, data, err, code } = res.data
 
       if (code === 401) {

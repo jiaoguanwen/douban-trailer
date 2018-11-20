@@ -27,6 +27,7 @@ export default class Home extends Component {
   }
 
   _getAllMovies = () => {
+    // TODO 这是什么玩意儿？
     request(window.__LOADING__)({
       method: 'get',
       url: `/api/v0/movies?type=${this.state.type || ''}&year=${this.state.year || ''}`
